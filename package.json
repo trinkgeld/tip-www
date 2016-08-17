@@ -1,0 +1,10 @@
+{
+	"name":         "tip-www",
+	"description":  "The website for Tip Me.",
+	"version":      "0.1.0",
+	"author":       "Jannis R <mail@jannisr.de>",
+	"homepage":     "https://github.com/trinkgeld/tip-www",
+	"repository":   "trinkgeld/tip-www",
+	"bugs":         "https://github.com/trinkgeld/tip-www/issues",
+	"license":      "GPL-3.0"
+}
