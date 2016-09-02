@@ -1,5 +1,6 @@
 'use strict'
 
 module.exports = {
-	post: require('./post')
+	post: require('./post'),
+	page: require('./page')
 }

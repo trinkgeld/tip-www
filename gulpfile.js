@@ -45,6 +45,25 @@ gulp.task('posts', () => pipe(
 
 
 
+gulp.task('pages', () => pipe(
+	  gulp.src(path.join(__dirname, 'pages/*'))
+	, frontmatter({property: 'meta', remove: true})
+	, markdown({preset: 'full'})
+	, bufferize() // template needs the whole content at once
+	, through((file, _, cb) => {
+		if (!file.isBuffer()) return cb()
+		file = file.clone()
+		const page = Object.assign({
+			content: file.contents.toString()
+		}, file.meta)
+		file.contents = Buffer.from(templates.page(site, page))
+		cb(null, file)
+	})
+	, gulp.dest(path.join(__dirname, 'dist'))
+))
+
+
+
 gulp.task('assets', () => pipe(
 	  gulp.src([path.join(__dirname, 'styles.css')])
 	, gulp.dest(path.join(__dirname, 'dist'))
@@ -54,5 +73,6 @@ gulp.task('assets', () => pipe(
 
 gulp.task('default', [
 	  'posts'
+	, 'pages'
 	, 'assets'
 ])
