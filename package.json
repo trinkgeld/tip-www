@@ -1,12 +1,16 @@
 {
 	"name":         "tip-www",
+	"title":        "Tip Me",
 	"description":  "The website for Tip Me.",
 	"version":      "0.1.0",
-	"author":       "Jannis R <mail@jannisr.de>",
+	"author":       {"name": "Jannis R", "email": "mail@jannisr.de"},
 	"homepage":     "https://github.com/trinkgeld/tip-www",
 	"repository":   "trinkgeld/tip-www",
 	"bugs":         "https://github.com/trinkgeld/tip-www/issues",
 	"license":      "GPL-3.0",
+	"devDependencies": {
+		"pithy": "^0.0.4"
+	},
 	"scripts": {
 		"deploy": "./deploy",
 		"ssh": "ssh -i ./.scaleway root@tip-me.org"
