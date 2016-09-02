@@ -72,6 +72,11 @@ a.button:active {
 	background-color: #1970a9;
 }
 
+ul {
+	padding-left: 0;
+	list-style-type: '– ';
+}
+
 
 
 body {
@@ -85,4 +90,20 @@ body {
 
 #content {
 	margin: 0 1rem;
+}
+
+
+
+#nav #logo {
+	margin: 0;
+	line-height: 2rem;
+}
+
+#nav #menu {
+	margin: 0;
+	list-style: none;
+	line-height: 2rem;
+}
+#nav #menu li {
+	display: inline-block;
 }
