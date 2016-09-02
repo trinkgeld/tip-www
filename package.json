@@ -9,7 +9,8 @@
 	"bugs":         "https://github.com/trinkgeld/tip-www/issues",
 	"license":      "GPL-3.0",
 	"devDependencies": {
-		"pithy": "^0.0.4"
+		"pithy": "^0.0.4",
+		"moment": "^2.14.1"
 	},
 	"scripts": {
 		"deploy": "./deploy",
