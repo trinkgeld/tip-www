@@ -4,14 +4,17 @@ const h = require('pithy')
 const moment = require('moment')
 const base = require('./base')
 
+const time = (date) =>
+	h.time({
+		id: 'post-meta-time',
+		datetime: moment(date).format('YYYY-MM-DD')
+	}, moment(date).locale('de').format('LL'))
+
 const post = (site, page) => base(site, page,
 	  h.div({id: 'post-meta'}, [
 		h.span({id: 'post-meta-author'}, page.author),
-		h.time({
-			id: 'post-meta-time',
-			datetime: moment(page.date).format('YYYY-MM-DD')
-		}, moment(page.date).locale('de').format('LL'))
+		time(page.date)
 	])
 	+ page.content)
 
-module.exports = post
+module.exports = Object.assign(post, {time})
