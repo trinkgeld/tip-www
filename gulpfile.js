@@ -97,7 +97,7 @@ gulp.task('start', () => pipe(
 
 
 gulp.task('assets', () => pipe(
-	  gulp.src([path.join(__dirname, 'styles.css')])
+	  gulp.src([path.join(__dirname, '*.css')])
 	, gulp.dest(path.join(__dirname, 'dist'))
 ))
 

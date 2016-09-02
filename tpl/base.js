@@ -6,8 +6,8 @@ const h = require('pithy')
 
 const viewport = h.meta({name: 'viewport', content: 'width=device-width,initial-scale=1'})
 
-const stylesheet = (href, media = 'screen') =>
-	h.link({rel: 'stylesheet', type: 'text/css', media, href})
+const stylesheet = (href) =>
+	h.link({rel: 'stylesheet', type: 'text/css', media: 'screen', href})
 
 const head = (site, page) => h.head({}, [
 	h.meta({charset: 'utf-8'}, ''),
@@ -16,8 +16,8 @@ const head = (site, page) => h.head({}, [
 	h.meta({name: 'keywords', content: page.keywords.join(', ')}, ''),
 	h.meta({name: 'author', content: page.author}, ''),
 	viewport,
-	stylesheet('/styles.css')
-])
+	stylesheet('/base.css')
+].concat((page.stylesheets || []).map(stylesheet)))
 
 const nav = (site, page) => h.nav({id: 'nav'}, [
 	h.h1({id: 'logo'}, [

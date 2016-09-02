@@ -6,6 +6,7 @@ keywords:
   - online
   - shops
 author: Jannis R
+stylesheets: ['/start.css']
 ---
 
 ## Give a Tip
