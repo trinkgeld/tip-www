@@ -85,6 +85,15 @@ gulp.task('pages', () => pipe(
 	, gulp.dest(path.join(__dirname, 'dist'))
 ))
 
+gulp.task('start', () => pipe(
+	  gulp.src(path.join(__dirname, 'pages/index.md'))
+	, frontmatter({property: 'meta', remove: true})
+	, markdown({preset: 'full'})
+	, bufferize() // template needs the whole content at once
+	, compile(templates.start)
+	, gulp.dest(path.join(__dirname, 'dist'))
+))
+
 
 
 gulp.task('assets', () => pipe(
@@ -97,5 +106,6 @@ gulp.task('assets', () => pipe(
 gulp.task('default', [
 	  'blog'
 	, 'pages'
+	, 'start'
 	, 'assets'
 ])

@@ -3,5 +3,6 @@
 module.exports = {
 	blog: require('./blog'),
 	post: require('./post'),
-	page: require('./page')
+	page: require('./page'),
+	start: require('./start')
 }
