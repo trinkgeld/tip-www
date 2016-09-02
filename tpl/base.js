@@ -16,7 +16,7 @@ const head = (site, page) => h.head({}, [
 	h.meta({name: 'keywords', content: page.keywords.join(', ')}, ''),
 	h.meta({name: 'author', content: page.author}, ''),
 	viewport,
-	stylesheet('styles.css')
+	stylesheet('/styles.css')
 ])
 
 const nav = (site, page) => h.nav({id: 'nav'}, [

@@ -19,7 +19,7 @@
 		"through-gulp": "^0.5"
 	},
 	"scripts": {
-		"build": "rm dist/*; gulp",
+		"build": "rm -r dist/*; gulp",
 		"deploy": "./deploy",
 		"ssh": "ssh -i ./.scaleway root@tip-me.org"
 	}

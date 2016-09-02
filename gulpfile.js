@@ -25,8 +25,8 @@ const posts = []
 
 
 
-gulp.task('posts', () => pipe(
-	  gulp.src(path.join(__dirname, 'posts/*'))
+gulp.task('blog', () => pipe(
+	  gulp.src(path.join(__dirname, 'blog/**/*.md'))
 	, frontmatter({property: 'meta', remove: true})
 	, markdown({preset: 'full'})
 	, bufferize() // template needs the whole content at once
@@ -40,13 +40,13 @@ gulp.task('posts', () => pipe(
 		file.contents = Buffer.from(templates.post(site, page))
 		cb(null, file)
 	})
-	, gulp.dest(path.join(__dirname, 'dist'))
+	, gulp.dest(path.join(__dirname, 'dist/blog'))
 ))
 
 
 
 gulp.task('pages', () => pipe(
-	  gulp.src(path.join(__dirname, 'pages/*'))
+	  gulp.src(path.join(__dirname, 'pages/**/*.md'))
 	, frontmatter({property: 'meta', remove: true})
 	, markdown({preset: 'full'})
 	, bufferize() // template needs the whole content at once
@@ -72,7 +72,7 @@ gulp.task('assets', () => pipe(
 
 
 gulp.task('default', [
-	  'posts'
+	  'blog'
 	, 'pages'
 	, 'assets'
 ])
