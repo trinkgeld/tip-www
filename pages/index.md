@@ -11,4 +11,10 @@ stylesheets: ['/start.css']
 
 ## Give a Tip
 
-coming soon
+<section>
+	foo bar baz
+</section>
+
+<section>
+	foo bar baz
+</section>

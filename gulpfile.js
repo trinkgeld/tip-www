@@ -49,7 +49,7 @@ gulp.task('blog', ['blog-posts', 'blog-index'])
 
 gulp.task('blog-posts', () => pipe(
 	  posts('blog')
-	, markdown({preset: 'full'})
+	, markdown({remarkableOptions: {html: true}, preset: 'full'})
 	, bufferize() // template needs the whole content at once
 	, compile(templates.post)
 	, gulp.dest(path.join(__dirname, 'dist/blog'))
@@ -79,7 +79,7 @@ gulp.task('blog-index', ['blog-posts'], () => pipe(
 
 gulp.task('pages', () => pipe(
 	  pages('pages')
-	, markdown({preset: 'full'})
+	, markdown({remarkableOptions: {html: true}, preset: 'full'})
 	, bufferize() // template needs the whole content at once
 	, compile(templates.page)
 	, gulp.dest(path.join(__dirname, 'dist'))
@@ -88,7 +88,7 @@ gulp.task('pages', () => pipe(
 gulp.task('start', () => pipe(
 	  gulp.src(path.join(__dirname, 'pages/index.md'))
 	, frontmatter({property: 'meta', remove: true})
-	, markdown({preset: 'full'})
+	, markdown({remarkableOptions: {html: true}, preset: 'full'})
 	, bufferize() // template needs the whole content at once
 	, compile(templates.start)
 	, gulp.dest(path.join(__dirname, 'dist'))

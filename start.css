@@ -1,0 +1,15 @@
+body {
+	max-width: none;
+}
+#nav {
+	margin: 0 auto;
+	max-width: 50rem;
+}
+
+#content section {
+	padding: 1rem 0;
+	border-bottom: 1px solid #ccc;
+}
+#content section:last-child {
+	border-bottom: none;
+}
