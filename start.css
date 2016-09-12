@@ -6,10 +6,29 @@ body {
 	max-width: 50rem;
 }
 
-#content section {
-	padding: 1rem 0;
-	border-bottom: 1px solid #ccc;
+#content #intro #intro-logo {
+	max-height: 10rem;
 }
-#content section:last-child {
-	border-bottom: none;
+
+#content #intro {
+	padding: 5rem 0;
+	padding: 20vh 0;
+	text-align: center;
+}
+
+#content #intro h2 {
+	font-size: 120%;
+	text-align: center;
+	font-weight: 300;
+}
+
+#content #intro .button {
+	margin: 1rem .5rem;
+	color: #444;
+	background-color: transparent;
+	border: 1px solid #444;
+}
+#content #intro .button:hover {
+	color: #777;
+	border-color: #777;
 }

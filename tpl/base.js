@@ -35,7 +35,7 @@ const tpl = (site, page, content) =>
 	h.html({lang: site.lang}, [
 		head(site, page),
 		h.body({}, [
-			nav(site, page),
+			(site.nav && site.nav.length > 0 ? nav(site, page) : ''),
 			h.main({id: 'content'}, [new h.SafeString(content)])
 		])
 	])

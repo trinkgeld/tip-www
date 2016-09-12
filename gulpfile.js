@@ -85,7 +85,7 @@ gulp.task('pages', () => pipe(
 	, gulp.dest(path.join(__dirname, 'dist'))
 ))
 
-gulp.task('start', () => pipe(
+gulp.task('start', ['pages'], () => pipe(
 	  gulp.src(path.join(__dirname, 'pages/index.md'))
 	, frontmatter({property: 'meta', remove: true})
 	, markdown({remarkableOptions: {html: true}, preset: 'full'})
@@ -97,7 +97,7 @@ gulp.task('start', () => pipe(
 
 
 gulp.task('assets', () => pipe(
-	  gulp.src([path.join(__dirname, '*.css')])
+	  gulp.src([path.join(__dirname, '*.css'), path.join(__dirname, '*.svg')])
 	, gulp.dest(path.join(__dirname, 'dist'))
 ))
 
