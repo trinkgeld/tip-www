@@ -19,15 +19,20 @@ const head = (site, page) => h.head({}, [
 	stylesheet('/base.css')
 ].concat((page.stylesheets || []).map(stylesheet)))
 
+// const nav = (site, page) => h.nav({id: 'nav'}, [
+// 	h.h1({id: 'logo'}, [
+// 		h.a({href: '/'}, site.title)
+// 	]),
+// 	h.ul({id: 'menu'}, site.nav.map((link) =>
+// 		h.li({}, [
+// 			h.a({href: link.href}, link.title)
+// 		])
+// 	))
+// ])
 const nav = (site, page) => h.nav({id: 'nav'}, [
-	h.h1({id: 'logo'}, [
-		h.a({href: '/'}, site.title)
-	]),
-	h.ul({id: 'menu'}, site.nav.map((link) =>
-		h.li({}, [
-			h.a({href: link.href}, link.title)
-		])
-	))
+	h.a({href: '/'}, [
+		h.img({id: 'nav-logo', src: '/jar.svg', alt: site.title})
+	])
 ])
 
 const tpl = (site, page, content) =>

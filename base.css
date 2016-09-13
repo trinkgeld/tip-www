@@ -87,6 +87,8 @@ body {
 #nav {
 	display: flex;
 	margin: 0 1rem 2rem 1rem;
+	justify-content: center;
+	padding: 1rem 0;
 }
 
 #content {
@@ -95,7 +97,7 @@ body {
 
 
 
-#nav #logo {
+/*#nav #logo {
 	margin: 0;
 	line-height: 2rem;
 }
@@ -115,4 +117,8 @@ body {
 	display: block;
 	padding: 0 .5em;
 	line-height: inherit;
+}*/
+
+#nav-logo {
+	max-height: 5rem;
 }
