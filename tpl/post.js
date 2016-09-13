@@ -3,6 +3,9 @@
 const h = require('pithy')
 const moment = require('moment')
 const base = require('./base')
+const {meta, facebook, stylesheet} = require('./lib')
+
+
 
 const time = (date) =>
 	h.time({
@@ -12,7 +15,13 @@ const time = (date) =>
 
 const post = (site, page) => base(
 	site,
-	Object.assign({}, page, {stylesheets: ['/post.css']}),
+	Object.assign({}, page, {
+		head: [
+			meta('author', page.author),
+			facebook('type', 'article'),
+			stylesheet('/post.css')
+		]
+	}),
 	page.content
 	+ h.p({id: 'post-meta'}, [
 		h.span({id: 'post-meta-author'}, page.author),

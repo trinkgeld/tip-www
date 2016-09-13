@@ -1,13 +1,10 @@
 'use strict'
 
 const h = require('pithy')
+const {viewport, meta, noReferrer, icon, stylesheet, facebook, pageUrl} = require('./lib')
 
 
 
-const viewport = h.meta({name: 'viewport', content: 'width=device-width,initial-scale=1'})
-
-const stylesheet = (href) =>
-	h.link({rel: 'stylesheet', type: 'text/css', media: 'screen', href})
 
 const head = (site, page) => h.head({}, [
 	h.meta({charset: 'utf-8'}, ''),
