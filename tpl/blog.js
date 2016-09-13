@@ -7,8 +7,10 @@ const {time} = require('./post')
 
 
 
-const blog = (site, page) => base(site, page,
-	'' + h.ol({}, page.posts.map((post) =>
+const blog = (site, page) => base(
+	site,
+	Object.assign({}, page, {stylesheets: ['/blog.css']}),
+	'' + h.ol({id: 'articles'}, page.posts.map((post) =>
 		h.li({}, [
 			h.a({href: path.relative(post.base, post.path)}, post.meta.title),
 			time(post.meta.date)
