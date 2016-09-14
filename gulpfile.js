@@ -102,7 +102,7 @@ gulp.task('start', () => pipe(
 
 
 gulp.task('assets', () => pipe(
-	  gulp.src(['*.css', '*.svg', '*.js'])
+	  gulp.src(['assets/**/*'])
 	, gulp.dest('dist')
 ))
 

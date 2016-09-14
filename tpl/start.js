@@ -8,9 +8,7 @@ const {stylesheet} = require('./lib')
 const start = (site, page) => base(
 	Object.assign({}, site, {nav: false}),
 	Object.assign(Object.create(page), {
-		head: [
-			stylesheet('/start.css')
-		]
+		head: page.stylesheets.map(stylesheet)
 	}),
 	page.content
 )

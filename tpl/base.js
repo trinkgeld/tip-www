@@ -28,7 +28,9 @@ const head = (site, page) =>
 		google('name', page.title),
 		google('description', page.description),
 		icon('/icon.png'),
-		stylesheet('/base.css')
+		stylesheet('/system-font.css'),
+		stylesheet('/base.css'),
+		stylesheet('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400')
 	].concat(page.head || []))
 
 // const nav = (site, page) => h.nav({id: 'nav'}, [
