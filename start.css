@@ -25,6 +25,7 @@ body {
 #content #intro #intro-thankyou {
 	font-style: normal;
 	text-decoration: underline;
+	transition: opacity .3s ease-in-out;
 }
 
 #content #intro .button {

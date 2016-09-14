@@ -8,6 +8,7 @@ keywords:
   - shops
 language: en
 stylesheets: ['/start.css']
+scripts: ['/start.js']
 ---
 
 <div id="intro">

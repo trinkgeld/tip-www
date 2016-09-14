@@ -4,7 +4,7 @@ const h = require('pithy')
 const {
 	viewport, meta, noReferrer,
 	facebook, twitter, google,
-	icon, stylesheet
+	icon, stylesheet, script
 } = require('./lib')
 
 
@@ -54,7 +54,7 @@ const tpl = (site, page, content) =>
 		h.body({}, [
 			(site.nav && site.nav.length > 0 ? nav(site, page) : ''),
 			h.main({id: 'content'}, [new h.SafeString('' + content)])
-		])
+		].concat((page.scripts || []).map(script)))
 	])
 
 module.exports = tpl

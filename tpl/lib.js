@@ -19,6 +19,9 @@ const noReferrer = h.meta({name: 'referrer', content: 'never'}, '')
 const stylesheet = (href) =>
 	h.link({rel: 'stylesheet', type: 'text/css', media: 'screen', href})
 
+const script = (href) =>
+	h.script({type: 'application/javascript', src: href})
+
 const icon = (href) =>
 	h.link({rel: 'icon', type: 'image/png', href})
 
@@ -49,7 +52,7 @@ const pageUrl = (page) => {
 
 
 module.exports = {
-	viewport, meta, noReferrer, stylesheet, icon,
+	viewport, meta, noReferrer, stylesheet, script, icon,
 	facebook, twitter, google,
 	pageUrl
 }
