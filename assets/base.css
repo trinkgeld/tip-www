@@ -24,6 +24,12 @@ body {
 	line-height: 1.35;
 }
 
+@media screen and (max-width: 30rem) {
+	body {
+		background-color: red;
+	}
+}
+
 h1 {
 	margin: 1rem 0;
 	font-size: 200%;
