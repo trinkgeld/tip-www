@@ -26,43 +26,49 @@ const site = {
 
 
 
-const pages = (dir) => pipe(
-	  gulp.src(path.join(__dirname, dir, '**/*.md'))
-	, frontmatter({property: 'meta', remove: true}))
+const pages = (globs) => pipe(
+	gulp.src(globs),
+	frontmatter({property: 'meta', remove: true})
+)
 
-const posts = (dir) =>
-	pages(dir)
-	.pipe(through((post, _, cb) => {
+const posts = (dir) => pipe(
+	pages(dir),
+	through((post, _, cb) => {
 		if ('date' in post.meta)
 			post.meta.date = moment(post.meta.date)
 		cb(null, post)
-	}))
+	})
+)
 
-const compile = (tpl) => through((post, _, cb) => {
-	post = post.clone()
-	const page = Object.assign({}, post.meta, {content: post.contents.toString()})
-	post.contents = Buffer.from(tpl(site, page))
-	cb(null, post)
-})
+const compile = (tpl) => pipe(
+	bufferize(), // template needs the whole content at once
+	through((post, _, cb) => {
+		const page = Object.assign(Object.create(post), post.meta, {
+			content: post.contents.toString()
+		})
+		post.contents = Buffer.from(tpl(site, page))
+		cb(null, post)
+	})
+)
 
 gulp.task('blog', ['blog-posts', 'blog-index'])
 
 gulp.task('blog-posts', () => pipe(
-	  posts('blog')
+	  posts(['blog/**.md'])
 	, markdown({remarkableOptions: {html: true}, preset: 'full'})
-	, bufferize() // template needs the whole content at once
 	, compile(templates.post)
 	, gulp.dest(path.join(__dirname, 'dist/blog'))
 ))
 
-gulp.task('blog-index', ['blog-posts'], () => pipe(
-	  posts('blog')
+gulp.task('blog-index', () => pipe(
+	  posts(['blog/**.md'])
 	, rename({extname: '.html'})
 	, reduce({objectMode: true}, (all, post) => all.concat(post), [])
 	, through((posts, _, cb) => {
 		const page = {
 			title: 'Blog', description: 'News about Tip Me',
 			keywords: [], author: 'Tip Me',
+			url: '/blog',
 			posts
 		}
 		cb(null, new File({
@@ -78,18 +84,15 @@ gulp.task('blog-index', ['blog-posts'], () => pipe(
 
 
 gulp.task('pages', () => pipe(
-	  pages('pages')
+	  pages(['pages/**/*.md', '!pages/index.md'])
 	, markdown({remarkableOptions: {html: true}, preset: 'full'})
-	, bufferize() // template needs the whole content at once
 	, compile(templates.page)
 	, gulp.dest(path.join(__dirname, 'dist'))
 ))
 
-gulp.task('start', ['pages'], () => pipe(
-	  gulp.src(path.join(__dirname, 'pages/index.md'))
-	, frontmatter({property: 'meta', remove: true})
+gulp.task('start', () => pipe(
+	  pages(['pages/index.md'])
 	, markdown({remarkableOptions: {html: true}, preset: 'full'})
-	, bufferize() // template needs the whole content at once
 	, compile(templates.start)
 	, gulp.dest(path.join(__dirname, 'dist'))
 ))

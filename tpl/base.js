@@ -38,7 +38,7 @@ const tpl = (site, page, content) =>
 		head(site, page),
 		h.body({}, [
 			(site.nav && site.nav.length > 0 ? nav(site, page) : ''),
-			h.main({id: 'content'}, [new h.SafeString(content)])
+			h.main({id: 'content'}, [new h.SafeString('' + content)])
 		])
 	])
 

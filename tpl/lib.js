@@ -27,14 +27,16 @@ const facebook = (key, value) =>
 
 const site = url.parse(pkg.url)
 const pageUrl = (page) => {
-	page = url.parse(page)
-	const pathname = path.join(site.pathname || '', page.pathname || '')
+	let p = path.basename(page.path, '.html') === 'index'
+		? path.dirname(page.path) : page.path
+	p = url.parse('/' + path.relative(page.base, p))
+	const pathname = path.join(site.pathname || '', p.pathname || '')
 	return url.format({
-		protocol: page.protocol || site.protocol,
-		hostname: page.hostname || site.hostname,
-		port:     page.port     || site.port,
-		query:    page.query    || site.query,
-		hash:     page.hash     || site.hash,
+		protocol: p.protocol || site.protocol,
+		hostname: p.hostname || site.hostname,
+		port:     p.port     || site.port,
+		query:    p.query    || site.query,
+		hash:     p.hash     || site.hash,
 		pathname
 	})
 }
