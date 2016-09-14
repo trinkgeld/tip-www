@@ -18,7 +18,11 @@ const index = (site, page) =>
 
 const blog = (site, page) => base(
 	site,
-	page,
+	Object.assign(Object.create(page), {
+		head: [
+			stylesheet('/blog.css')
+		]
+	}),
 	index(site, page)
 )
 

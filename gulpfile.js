@@ -56,14 +56,14 @@ const compile = (tpl) => pipe(
 gulp.task('blog', ['blog-posts', 'blog-index'])
 
 gulp.task('blog-posts', () => pipe(
-	  posts(['blog/**.md'])
+	  posts(['blog/**/*.md'])
 	, markdown({remarkableOptions: {html: true}, preset: 'full'})
 	, compile(templates.post)
 	, gulp.dest(path.join(__dirname, 'dist/blog'))
 ))
 
 gulp.task('blog-index', () => pipe(
-	  posts(['blog/**.md'])
+	  posts(['blog/**/*.md'])
 	, rename({extname: '.html'})
 	, reduce({objectMode: true}, (all, post) => all.concat(post), [])
 	, through((posts, _, cb) => {
