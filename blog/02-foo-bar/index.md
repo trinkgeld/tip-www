@@ -1,6 +1,7 @@
 ---
 title: Foo Bar
 description: This is a test.
+summary: Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 keywords:
   - foo
   - bar

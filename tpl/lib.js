@@ -25,6 +25,12 @@ const icon = (href) =>
 const facebook = (key, value) =>
 	h.meta({property: 'og:' + key, content: value})
 
+const twitter = (key, value) =>
+	h.meta({property: 'twitter:' + key, content: value})
+
+const google = (key, value) =>
+	h.meta({itemprop: 'google:' + key, content: value})
+
 const site = url.parse(pkg.url)
 const pageUrl = (page) => {
 	let p = path.basename(page.path, '.html') === 'index'
@@ -42,4 +48,8 @@ const pageUrl = (page) => {
 }
 
 
-module.exports = {viewport, meta, noReferrer, stylesheet, icon, facebook, pageUrl}
+module.exports = {
+	viewport, meta, noReferrer, stylesheet, icon,
+	facebook, twitter, google,
+	pageUrl
+}

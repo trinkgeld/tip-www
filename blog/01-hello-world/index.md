@@ -1,6 +1,7 @@
 ---
 title: Hello World
 description: What is Tip Me?
+summary: Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 keywords:
   - tip
   - online

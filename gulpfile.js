@@ -13,10 +13,11 @@ const reduce = require('through2-reduce')
 const File = require('vinyl')
 
 const templates = require('./tpl/index')
+const pageUrl = require('./tpl/lib').pageUrl
 const pkg = require('./package.json')
 
 const site = {
-	lang: 'en',
+	language: 'de',
 	title: pkg.title,
 	nav: [
 		{href: '/developers', title: 'Developers'},
@@ -44,6 +45,7 @@ const compile = (tpl) => pipe(
 	bufferize(), // template needs the whole content at once
 	through((post, _, cb) => {
 		const page = Object.assign(Object.create(post), post.meta, {
+			url: pageUrl(post),
 			content: post.contents.toString()
 		})
 		post.contents = Buffer.from(tpl(site, page))

@@ -1,11 +1,11 @@
 ---
 title: Start
 description: An Introduction to Tip Me
+summary: Say Thank you to those who made your products.
 keywords:
   - tip
   - online
   - shops
-author: Jannis R
 stylesheets: ['/start.css']
 ---
 

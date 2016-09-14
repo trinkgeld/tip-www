@@ -1,20 +1,35 @@
 'use strict'
 
 const h = require('pithy')
-const {viewport, meta, noReferrer, icon, stylesheet, facebook, pageUrl} = require('./lib')
+const {
+	viewport, meta, noReferrer,
+	facebook, twitter, google,
+	icon, stylesheet
+} = require('./lib')
 
 
 
-
-const head = (site, page) => h.head({}, [
-	h.meta({charset: 'utf-8'}, ''),
-	h.title({}, [page.title, '☮', site.title].join(' ')),
-	h.meta({name: 'description', content: page.description}, ''),
-	h.meta({name: 'keywords', content: page.keywords.join(', ')}, ''),
-	h.meta({name: 'author', content: page.author}, ''),
-	viewport,
-	stylesheet('/base.css')
-].concat((page.stylesheets || []).map(stylesheet)))
+const head = (site, page) =>
+	h.head({}, [
+		h.meta({charset: 'utf-8'}),
+		viewport,
+		h.title({}, [page.title, '☮', site.title].join(' ')),
+		meta('summary', page.summary),
+		meta('description', page.description),
+		meta('url', page.url),
+		noReferrer,
+		facebook('url', page.url),
+		facebook('site_name', site.title),
+		facebook('title', page.title),
+		facebook('description', page.description),
+		twitter('site', site.title),
+		twitter('title', page.title),
+		twitter('description', page.description),
+		google('name', page.title),
+		google('description', page.description),
+		icon('/icon.png'),
+		stylesheet('/base.css')
+	].concat(page.head || []))
 
 // const nav = (site, page) => h.nav({id: 'nav'}, [
 // 	h.h1({id: 'logo'}, [
@@ -34,7 +49,7 @@ const nav = (site, page) => h.nav({id: 'nav'}, [
 
 const tpl = (site, page, content) =>
 	'<!DOCTYPE html>' +
-	h.html({lang: site.lang}, [
+	h.html({lang: page.language || site.language}, [
 		head(site, page),
 		h.body({}, [
 			(site.nav && site.nav.length > 0 ? nav(site, page) : ''),
