@@ -7,7 +7,7 @@ body {
 }
 
 #content #intro #intro-logo {
-	max-height: 10rem;
+	max-height: 12rem;
 }
 
 #content #intro {
@@ -20,6 +20,11 @@ body {
 	font-size: 120%;
 	text-align: center;
 	font-weight: 300;
+}
+
+#content #intro #intro-thankyou {
+	font-style: normal;
+	text-decoration: underline;
 }
 
 #content #intro .button {

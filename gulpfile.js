@@ -59,7 +59,7 @@ gulp.task('blog-posts', () => pipe(
 	  posts(['blog/**/*.md'])
 	, markdown({remarkableOptions: {html: true}, preset: 'full'})
 	, compile(templates.post)
-	, gulp.dest(path.join(__dirname, 'dist/blog'))
+	, gulp.dest('dist/blog')
 ))
 
 gulp.task('blog-index', () => pipe(
@@ -80,7 +80,7 @@ gulp.task('blog-index', () => pipe(
 			contents: Buffer.from(templates.blog(site, page))
 		}))
 	})
-	, gulp.dest(path.join(__dirname, 'dist/blog'))
+	, gulp.dest('dist/blog')
 ))
 
 
@@ -89,21 +89,21 @@ gulp.task('pages', () => pipe(
 	  pages(['pages/**/*.md', '!pages/index.md'])
 	, markdown({remarkableOptions: {html: true}, preset: 'full'})
 	, compile(templates.page)
-	, gulp.dest(path.join(__dirname, 'dist'))
+	, gulp.dest('dist')
 ))
 
 gulp.task('start', () => pipe(
 	  pages(['pages/index.md'])
 	, markdown({remarkableOptions: {html: true}, preset: 'full'})
 	, compile(templates.start)
-	, gulp.dest(path.join(__dirname, 'dist'))
+	, gulp.dest('dist')
 ))
 
 
 
 gulp.task('assets', () => pipe(
-	  gulp.src([path.join(__dirname, '*.css'), path.join(__dirname, '*.svg')])
-	, gulp.dest(path.join(__dirname, 'dist'))
+	  gulp.src(['*.css', '*.svg'])
+	, gulp.dest('dist')
 ))
 
 
