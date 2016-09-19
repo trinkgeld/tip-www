@@ -8,6 +8,7 @@ keywords:
   - globalisierung
   - anerkennung
 author: Jannis R
+picture: hallo-welt.png
 date: 2016-09-19
 ---
 

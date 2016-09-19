@@ -2,8 +2,9 @@
 
 const h = require('pithy')
 const moment = require('moment')
+const path = require('path')
 const base = require('./base')
-const {meta, facebook, stylesheet} = require('./lib')
+const {meta, facebook, stylesheet, twitter, google} = require('./lib')
 
 
 
@@ -21,16 +22,22 @@ const article = (site, page) =>
 		time(page.date)
 	])
 
-const post = (site, page) => base(
+const post = (site, page) => {
+	return base(
 	site,
 	Object.assign(Object.create(page), {
 		head: [
 			meta('author', page.author),
 			facebook('type', 'article'),
 			stylesheet('/post.css')
-		]
+		].concat(page.picture ? [
+			// <meta property="og:image" content="https://example.com/image.jpg">
+			facebook('image', path.join(page.url, page.picture)),
+			twitter('image', path.join(page.url, page.picture)),
+			google('image', path.join(page.url, page.picture))
+		] : [])
 	}),
 	article(site, page)
-)
+)}
 
 module.exports = Object.assign(post, {time})
