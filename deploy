@@ -2,5 +2,4 @@
 
 rsync -rav --delete -e 'ssh -i ./.scaleway' \
 	--exclude '.*' \
-	--exclude node_modules \
-	. 'root@tip-me.org:/var/www/tip-me.org/'
+	dist/* 'root@tip-me.org:/var/www/tip-me.org/'

@@ -14,8 +14,6 @@ date: 2016-09-19
 ## Hallo Welt
 
 > Nichts ist mächtiger als eine Idee, deren Zeit gekommen ist.
->
-> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, similique.
 
 Die Idee des Trinkgelds ist Jahrhunderte alt. Überall geben Menschen gerne ein bisschen mehr als Anerkennung für gute Arbeit. Es ist keine Spende, sondern eine Begegnung auf Augenhöhe.
 
