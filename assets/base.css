@@ -61,6 +61,10 @@ a.button:active {
 	background-color: #1970a9;
 }
 
+img {
+	max-width: 100%;
+}
+
 code {
 	padding: .1em .2em;
 	word-break: keep-all;
