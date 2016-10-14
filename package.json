@@ -19,7 +19,9 @@
 		"highlight.js": "^9.7",
 		"vinyl-buffer": "^1",
 		"through-gulp": "^0.5",
-		"gulp-filter": "^4"
+		"gulp-filter": "^4",
+		"gulp-rename": "^1.2.2",
+		"through2-reduce": "^1.1.1"
 	},
 	"scripts": {
 		"build": "rm -r dist/*; gulp",

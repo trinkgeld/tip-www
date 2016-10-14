@@ -7,7 +7,7 @@ keywords:
   - dankeschön
   - globalisierung
   - anerkennung
-author: Jannis R
+author: Jannis
 picture: hallo-welt.png
 date: 2016-09-19
 ---
