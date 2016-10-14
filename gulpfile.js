@@ -6,6 +6,7 @@ const frontmatter = require('gulp-front-matter')
 const through = require('through-gulp')
 const moment = require('moment')
 const path = require('path')
+const filter = require('gulp-filter')
 const rename = require('gulp-rename')
 const markdown = require('gulp-remarkable')
 const bufferize = require('vinyl-buffer')
@@ -41,6 +42,11 @@ const posts = (dir) => pipe(
 	})
 )
 
+const media = (globs) => pipe(
+	gulp.src(globs),
+	filter((f) => !f.isDirectory() && path.extname(f.path) !== '.md')
+)
+
 const compile = (tpl) => pipe(
 	bufferize(), // template needs the whole content at once
 	through((post, _, cb) => {
@@ -53,7 +59,7 @@ const compile = (tpl) => pipe(
 	})
 )
 
-gulp.task('blog', ['blog-posts', 'blog-index'])
+gulp.task('blog', ['blog-posts', 'blog-index', 'blog-media'])
 
 gulp.task('blog-posts', () => pipe(
 	  posts(['blog/**/*.md'])
@@ -83,9 +89,14 @@ gulp.task('blog-index', () => pipe(
 	, gulp.dest('dist/blog')
 ))
 
+gulp.task('blog-media', () => pipe(
+	  media(['blog/**/*'])
+	, gulp.dest('dist/blog')
+))
 
 
-gulp.task('pages', () => pipe(
+
+gulp.task('pages', ['pages-media'], () => pipe(
 	  pages(['pages/**/*.md', '!pages/index.md'])
 	, markdown({remarkableOptions: {html: true}, preset: 'full'})
 	, compile(templates.page)
@@ -96,6 +107,11 @@ gulp.task('start', () => pipe(
 	  pages(['pages/index.md'])
 	, markdown({remarkableOptions: {html: true}, preset: 'full'})
 	, compile(templates.start)
+	, gulp.dest('dist')
+))
+
+gulp.task('pages-media', () => pipe(
+	  media(['pages/**/*'])
 	, gulp.dest('dist')
 ))
 

@@ -17,7 +17,8 @@
 		"gulp-front-matter": "^1.3",
 		"gulp-remarkable": "^1.1.2",
 		"vinyl-buffer": "^1",
-		"through-gulp": "^0.5"
+		"through-gulp": "^0.5",
+		"gulp-filter": "^4"
 	},
 	"scripts": {
 		"build": "rm -r dist/*; gulp",
