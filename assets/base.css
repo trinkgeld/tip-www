@@ -61,6 +61,23 @@ a.button:active {
 	background-color: #1970a9;
 }
 
+code {
+	padding: .1em .2em;
+	word-break: keep-all;
+	background-color: #f0f0f0;
+	border-radius: .2em;
+}
+
+pre {
+	margin: 1rem 0;
+	word-break: keep-all;
+}
+pre code, pre code.hljs {
+	padding: .5em;
+	display: block;
+	background-color: #f0f0f0;
+}
+
 ul {
 	padding-left: 0;
 	list-style-type: '– ';

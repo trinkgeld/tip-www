@@ -8,7 +8,8 @@ const moment = require('moment')
 const path = require('path')
 const filter = require('gulp-filter')
 const rename = require('gulp-rename')
-const markdown = require('gulp-remarkable')
+const remarkable = require('gulp-remarkable')
+const highlight = require('highlight.js')
 const bufferize = require('vinyl-buffer')
 const reduce = require('through2-reduce')
 const File = require('vinyl')
@@ -47,6 +48,19 @@ const media = (globs) => pipe(
 	filter((f) => !f.isDirectory() && path.extname(f.path) !== '.md')
 )
 
+const markdown = () =>
+	remarkable({remarkableOptions: {
+		html: true,
+		langPrefix: 'hljs language-',
+		highlight: (str, lang) => {
+			if (lang && highlight.getLanguage(lang)) {
+				try {return highlight.highlight(lang, str).value}
+				catch (err) {}
+			}
+			return '' // use external default escaping
+		}
+	}, preset: 'full'})
+
 const compile = (tpl) => pipe(
 	bufferize(), // template needs the whole content at once
 	through((post, _, cb) => {
@@ -63,7 +77,7 @@ gulp.task('blog', ['blog-posts', 'blog-index', 'blog-media'])
 
 gulp.task('blog-posts', () => pipe(
 	  posts(['blog/**/*.md'])
-	, markdown({remarkableOptions: {html: true}, preset: 'full'})
+	, markdown()
 	, compile(templates.post)
 	, gulp.dest('dist/blog')
 ))
@@ -98,14 +112,14 @@ gulp.task('blog-media', () => pipe(
 
 gulp.task('pages', ['pages-media'], () => pipe(
 	  pages(['pages/**/*.md', '!pages/index.md'])
-	, markdown({remarkableOptions: {html: true}, preset: 'full'})
+	, markdown()
 	, compile(templates.page)
 	, gulp.dest('dist')
 ))
 
 gulp.task('start', () => pipe(
 	  pages(['pages/index.md'])
-	, markdown({remarkableOptions: {html: true}, preset: 'full'})
+	, markdown()
 	, compile(templates.start)
 	, gulp.dest('dist')
 ))
