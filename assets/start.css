@@ -6,14 +6,17 @@ body {
 	max-width: 50rem;
 }
 
-#content #intro #intro-logo {
-	max-height: 12rem;
+#content {
+	padding: 5rem 0;
+	padding: 20vh 0;
 }
 
 #content #intro {
-	padding: 5rem 0;
-	padding: 20vh 0;
 	text-align: center;
+}
+
+#content #intro #intro-logo {
+	max-height: 12rem;
 }
 
 #content #intro h2 {
@@ -40,4 +43,9 @@ body {
 #content #intro .button:hover {
 	color: #777;
 	border-color: #777;
+}
+
+#content #newsletter {
+	margin: 3rem auto 1rem auto;
+	max-width: 30rem;
 }

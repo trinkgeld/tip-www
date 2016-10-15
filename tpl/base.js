@@ -30,6 +30,7 @@ const head = (site, page) =>
 		icon('/icon.png'),
 		stylesheet('/system-font.css'),
 		stylesheet('/base.css'),
+		stylesheet('/forms.css'),
 		stylesheet('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400')
 	].concat(page.head || []))
 
