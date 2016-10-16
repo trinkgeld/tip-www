@@ -18,5 +18,5 @@ author: Jannis
 
 The following things need to done by your shop system to integrate *Tip Me*:
 
-1. [Tell the Tip Me script where and how to render the banner.](banner.html)
+1. [Integrate the tip banner.](banner.html)
 2. Accept additional parameters when proceeding to checkout. – *coming soon*

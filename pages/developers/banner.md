@@ -17,26 +17,18 @@ The tip banner asks users to give a tip. It looks like this:
 
 ![the tip banner when giving a tip](banner.png)
 
-### 1. Embed the *Tip Me* script
+To get started, you can fork the [Ethletic integration](https://github.com/trinkgeld/tip-ui-ethletic). It will be kept up to date by us.
 
-Paste following code as the last child of the `body` element (right before `</body>`).
+1. Your integration must export a function `init` with the signature `(active, tip) => update`. `init` must check if all requirements are met, e.g. if all subtotal have been sufficiently marked up to be accessed.
 
-```html
-<script src="https://trinkgeld.github.io/tip-ui/tip-ui.js"></script>
-```
+2. `update` has the signature `(active, tip) => void`. It is supposed to update/rerender the tip amount and the total appropriately.
 
-### 2. Insert a marker for the tip banner
+3. `init.format` must be a function that takes a price and formats it as a string, according to the shops localization. `init.parse` must be a function that takes a formatted price and parses it, returning a number.
 
-Paste the following code where you want the banner to be shown:
+4. `init.css` must be a string of shop-specific CSS. It will be appended to the `<head>` element.
 
-```html
-<div id="tip-me-banner" style="display: none;"></div>
-```
+The build script in [`tip-ui`](https://github.com/trinkgeld/tip-ui) will build all integrations specified. Embed `dist/your-integration.min.js` into your shop.
 
-### 3. Insert a marker for the amount
+### Troubleshooting
 
-*coming soon*
-
-### 4. Done
-
-That's it! The banner should show up now. If not, [contact us](/contact/).
+If get into any difficulties, [created an issue in the `tip-ui` repo](https://github.com/trinkgeld/tip-ui/issues) or [contact us](/contact/).
