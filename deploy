@@ -1,5 +1,5 @@
 #!/bin/sh
 
-rsync -rav --delete -e 'ssh -i ./.scaleway' \
+rsync -rav --delete \
 	--exclude '.*' \
 	dist/* 'root@tip-me.org:/var/www/tip-me.org/'

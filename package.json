@@ -26,6 +26,6 @@
 	"scripts": {
 		"build": "rm -r dist/*; gulp",
 		"deploy": "./deploy",
-		"ssh": "ssh -i ./.scaleway root@tip-me.org"
+		"ssh": "ssh root@tip-me.org"
 	}
 }
