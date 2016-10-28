@@ -1,17 +1,17 @@
 'use strict'
 
-const path = require('path')
-
 const content = require('../lib/content')
-const tpl = require('../tpl/start')
+const normalize = require('../lib/normalize-path')
+const tpl = require('../tpl/post')
 const site = require('../lib/site')
 
 
 
 const route = (req, res, next) => {
-	content('pages')
+	if (req.path.slice(-1) !== '/') return next()
+
+	content(normalize(req.path))
 	.then((page) => {
-		page.path = path.join(page.base, 'index.html')
 		res.end(tpl(site, page))
 	})
 	.catch(next)

@@ -9,7 +9,7 @@ const serve        = require('serve-static')
 const start = require('./routes/start')
 const page = require('./routes/page')
 const blog = require('./routes/blog')
-const article = require('./routes/article')
+const post = require('./routes/post')
 
 
 
