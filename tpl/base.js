@@ -4,7 +4,8 @@ const h = require('pithy')
 const {
 	viewport, meta, noReferrer,
 	facebook, twitter, google,
-	icon, stylesheet, script
+	icon, stylesheet, script,
+	pageUrl
 } = require('./lib')
 
 
@@ -16,9 +17,9 @@ const head = (site, page) =>
 		h.title({}, [page.title, '☮', site.title].join(' ')),
 		meta('summary', page.summary),
 		meta('description', page.description),
-		meta('url', page.url),
+		meta('url', pageUrl(page)),
 		noReferrer,
-		facebook('url', page.url),
+		facebook('url', pageUrl(page)),
 		facebook('site_name', site.title),
 		facebook('title', page.title),
 		facebook('description', page.description),

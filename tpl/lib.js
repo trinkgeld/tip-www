@@ -36,17 +36,15 @@ const google = (key, value) =>
 
 const site = url.parse(pkg.url)
 const pageUrl = (page) => {
-	let p = path.basename(page.path, '.html') === 'index'
-		? path.dirname(page.path) : page.path
-	p = url.parse('/' + path.relative(page.base, p))
-	const pathname = path.join(site.pathname || '', p.pathname || '')
+	const p = url.parse('/' + page.url)
+	if (p.pathname.slice(-1) !== '/') p.pathname += '/'
 	return url.format({
 		protocol: p.protocol || site.protocol,
 		hostname: p.hostname || site.hostname,
 		port:     p.port     || site.port,
 		query:    p.query    || site.query,
 		hash:     p.hash     || site.hash,
-		pathname
+		pathname: path.join(site.pathname || '', p.pathname || '')
 	})
 }
 

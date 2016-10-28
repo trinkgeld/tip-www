@@ -22,8 +22,7 @@ const article = (site, page) =>
 		time(page.date)
 	])
 
-const post = (site, page) => {
-	return base(
+const post = (site, page) => base(
 	site,
 	Object.assign(Object.create(page), {
 		head: [
@@ -39,6 +38,6 @@ const post = (site, page) => {
 		] : [])
 	}),
 	article(site, page)
-)}
+)
 
 module.exports = Object.assign(post, {time})

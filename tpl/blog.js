@@ -3,7 +3,7 @@
 const h = require('pithy')
 const path = require('path')
 const base = require('./base')
-const {stylesheet} = require('./lib')
+const {stylesheet, pageUrl} = require('./lib')
 const {time} = require('./post')
 
 
@@ -11,8 +11,8 @@ const {time} = require('./post')
 const index = (site, page) =>
 	h.ol({id: 'articles'}, page.posts.map((post) =>
 		h.li({}, [
-			h.a({href: path.relative(post.base, post.path)}, post.meta.title),
-			time(post.meta.date)
+			h.a({href: pageUrl(post)}, post.title),
+			time(post.date)
 		])
 	))
 

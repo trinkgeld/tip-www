@@ -21,10 +21,10 @@ app.use(compression())
 
 
 
-app.get('/', start)
 app.get('/blog', blog)
-app.get('/blog/:article', article)
-app.get('/:page', page)
+app.get('/blog/*', post)
+app.get('/', start)
+app.get('/*', page)
 
 app.use('/blog', serve(path.join(__dirname, 'blog'), {index: false}))
 app.use('/', serve(path.join(__dirname, 'pages'), {index: false}))
