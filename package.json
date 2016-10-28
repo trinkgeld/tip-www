@@ -1,9 +1,10 @@
 {
+	"private":      true,
 	"name":         "tip-www",
 	"title":        "Tip Me",
 	"description":  "The website for Tip Me.",
 	"url":          "https://tip-me.org/",
-	"version":      "0.1.0",
+	"version":      "0.2.0",
 	"author":       {"name": "Jannis R", "email": "mail@jannisr.de"},
 	"homepage":     "https://github.com/trinkgeld/tip-www",
 	"repository":   "trinkgeld/tip-www",
@@ -24,7 +25,6 @@
 		"through2-reduce": "^1.1.1"
 	},
 	"scripts": {
-		"build": "rm -r dist/*; gulp",
 		"deploy": "./deploy",
 		"ssh": "ssh root@tip-me.org"
 	}
