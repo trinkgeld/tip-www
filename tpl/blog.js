@@ -20,7 +20,7 @@ const blog = (site, page) => base(
 	site,
 	Object.assign(Object.create(page), {
 		head: [
-			stylesheet('/blog.css')
+			stylesheet('/assets/blog.css')
 		]
 	}),
 	index(site, page)

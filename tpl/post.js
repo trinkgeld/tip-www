@@ -28,8 +28,8 @@ const post = (site, page) => base(
 		head: [
 			meta('author', page.author),
 			facebook('type', 'article'),
-			stylesheet('/post.css'),
-			stylesheet('/highlight.js/tomorrow.css')
+			stylesheet('/assets/post.css'),
+			stylesheet('/assets/highlight.js/tomorrow.css')
 		].concat(page.picture ? [
 			// <meta property="og:image" content="https://example.com/image.jpg">
 			facebook('image', path.join(page.url, page.picture)),

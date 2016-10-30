@@ -28,10 +28,10 @@ const head = (site, page) =>
 		twitter('description', page.description),
 		google('name', page.title),
 		google('description', page.description),
-		icon('/icon.png'),
-		stylesheet('/system-font.css'),
-		stylesheet('/base.css'),
-		stylesheet('/forms.css'),
+		icon('/assets/icon.png'),
+		stylesheet('/assets/system-font.css'),
+		stylesheet('/assets/base.css'),
+		stylesheet('/assets/forms.css'),
 		stylesheet('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400')
 	].concat(page.head || []))
 
@@ -47,7 +47,7 @@ const head = (site, page) =>
 // ])
 const nav = (site, page) => h.nav({id: 'nav'}, [
 	h.a({href: '/'}, [
-		h.img({id: 'nav-logo', src: '/jar.svg', alt: site.title})
+		h.img({id: 'nav-logo', src: '/assets/jar.svg', alt: site.title})
 	])
 ])
 

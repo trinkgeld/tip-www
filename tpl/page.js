@@ -6,7 +6,7 @@ const {stylesheet} = require('./lib')
 const page = (site, page) => base(
 	site,
 	Object.assign(Object.create(page), {
-		head: [stylesheet('/highlight.js/tomorrow.css')]
+		head: [stylesheet('/assets/highlight.js/tomorrow.css')]
 	}),
 	page.content
 )

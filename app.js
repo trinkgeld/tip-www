@@ -4,7 +4,7 @@ const express      = require('express')
 const hsts         = require('hsts')
 const compression  = require('compression')
 const path         = require('path')
-const serve        = require('serve-static')
+const serveStatic = require('serve-static')
 
 const start = require('./routes/start')
 const page = require('./routes/page')
@@ -26,9 +26,12 @@ app.get('/blog/*', post)
 app.get('/', start)
 app.get('/*', page)
 
-app.use('/blog', serve(path.join(__dirname, 'blog'), {index: false}))
-app.use('/', serve(path.join(__dirname, 'pages'), {index: false}))
-app.use('/', serve(path.join(__dirname, 'assets'), {index: false}))
+
+const serve = (p) =>
+	serveStatic(path.join(__dirname, p), {index: false, fallthrough: true})
+app.use('/blog', serve('blog'))
+app.use('/assets', serve('assets'))
+app.use('/', serve('pages'))
 
 
 
