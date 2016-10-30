@@ -10,6 +10,7 @@ const start = require('./routes/start')
 const page = require('./routes/page')
 const blog = require('./routes/blog')
 const post = require('./routes/post')
+const receiver = require('./routes/receiver')
 
 
 
@@ -23,6 +24,7 @@ app.use(compression())
 
 app.get('/blog', blog)
 app.get('/blog/*', post)
+app.get('/receivers/:receiver/', receiver)
 app.get('/', start)
 app.get('/*', page)
 

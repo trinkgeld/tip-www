@@ -1,0 +1,38 @@
+body {
+	max-width: none;
+}
+
+#nav {
+	position: absolute;
+	margin-left: 0; margin-right: 0;
+	padding-left: 0; padding-right: 0;
+	top: 0; left: 0;
+	width: 100%;
+}
+
+#content {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+#picture {
+	height: 25rem;
+	height: 60vh;
+	background-color: #555;
+	background-position: center center;
+	background-size: cover;
+}
+#picture > img {
+	display: none;
+}
+
+#details {
+	margin: 0 auto;
+	padding: 1rem;
+	max-width: 50rem;
+}
+
+#details h2 {
+	margin-top: 0;
+	text-align: center;
+}
