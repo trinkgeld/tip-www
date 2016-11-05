@@ -45,11 +45,15 @@ const head = (site, page) =>
 // 		])
 // 	))
 // ])
-const nav = (site, page) => h.nav({id: 'nav'}, [
-	h.a({href: '/'}, [
-		h.img({id: 'nav-logo', src: '/assets/jar.svg', alt: site.title})
+const nav = (site, page) => {
+	const style = page.navBackground ?
+		`background-image: url(${page.navBackground})` : 'none'
+	return h.nav({id: 'nav', style}, [
+		h.a({href: '/'}, [
+			h.img({id: 'nav-logo', src: '/assets/jar.svg', alt: site.title})
+		])
 	])
-])
+}
 
 const tpl = (site, page, content) =>
 	'<!DOCTYPE html>' +

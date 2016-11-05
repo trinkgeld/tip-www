@@ -26,28 +26,17 @@ const map = (lat, lon, opt = {}) => h.img({
 	})
 })
 
-const hero = (site, page) =>
-	h.div({
-		id: 'picture',
-		style: `background-image: url(${page.photo})`
-	}, [
-		h.img({src: page.photo})
-	])
-
 const blog = (site, page) => base(
 	site,
 	Object.assign(Object.create(page), {
 		head: [
 			stylesheet('/assets/receiver.css')
-		]
+		],
+		navBackground: page.photo
 	}),
-	h.div({}, [
-		hero(site, page),
-		h.div({id: 'details'}, [
-			h.h2({}, page.title),
-			// map(page.lat, page.lon, {alt: 'map showing ' + page.title})
-		])
-	])
+	[
+		h.h2({}, page.title)
+	].join('')
 )
 
 module.exports = blog
