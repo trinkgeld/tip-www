@@ -2,9 +2,14 @@
 
 const h = require('pithy')
 const url = require('url')
+const interpolate = require('util').format
+const accounting = require('accounting')
 
 const base = require('./base')
 const {stylesheet} = require('./lib')
+
+const formatMoney = (amount) =>
+	accounting.formatMoney(amount, {symbol: '€', decimal: ',', thousand: '.'})
 
 
 
@@ -26,6 +31,14 @@ const map = (lat, lon, opt = {}) => h.img({
 	})
 })
 
+const amount = (site, page) => {
+	const nr = page.tips.length
+	const amount = page.tips.reduce((sum, tip) => sum + tip.amount, 0)
+	return h.p({},
+		`${page.title} has received ${nr} tips, worth ${formatMoney(amount)}.`
+	)
+}
+
 const blog = (site, page) => base(
 	site,
 	Object.assign(Object.create(page), {
@@ -35,8 +48,9 @@ const blog = (site, page) => base(
 		navBackground: page.photo
 	}),
 	[
-		h.h2({}, page.title)
-	].join('')
+		h.h2({}, page.title),
+		amount(site, page)
+	].join('\n')
 )
 
 module.exports = blog

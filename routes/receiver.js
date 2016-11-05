@@ -4,6 +4,7 @@ const path = require('path')
 
 const normalize = require('../lib/normalize-path')
 const receiver = require('../lib/receiver')
+const tips = require('../lib/tips')
 const tpl = require('../tpl/receiver')
 const site = require('../lib/site')
 
@@ -15,11 +16,15 @@ const route = (req, res, next) => {
 	if (!req.params.receiver) return next()
 	const id = req.params.receiver
 
-	receiver(id)
-	.then((page) => {
+	Promise.all([
+		receiver(id), tips({receiver: id})
+	])
+	.then(([page, tips]) => {
 		page.title = page.name
 		page.path = path.join(base, 'receivers/' + id)
 		page.url = `/receivers/${id}/`
+
+		page.tips = tips
 		res.end(tpl(site, page))
 	})
 	.catch(next)
