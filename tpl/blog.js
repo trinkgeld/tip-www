@@ -11,7 +11,7 @@ const {time} = require('./post')
 const index = (site, page) =>
 	h.ol({id: 'articles'}, page.posts.map((post) =>
 		h.li({}, [
-			h.a({href: pageUrl(post)}, post.title),
+			h.a({href: pageUrl(post, false)}, post.title),
 			time(post.date)
 		])
 	))

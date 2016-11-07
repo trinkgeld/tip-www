@@ -16,7 +16,8 @@ const route = (req, res, next) => {
 		const page = {
 			title: 'Blog', description: 'News about Tip Me',
 			keywords: [], author: 'Tip Me',
-			base, path: path.join(base, 'blog/index.html'), posts
+			base, path: path.join(base, 'blog/index.html'), url: 'blog',
+			posts
 		}
 		res.end(tpl(site, page))
 	})

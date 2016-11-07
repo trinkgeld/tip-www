@@ -35,10 +35,10 @@ const google = (key, value) =>
 	h.meta({itemprop: 'google:' + key, content: value})
 
 const site = url.parse(pkg.url)
-const pageUrl = (page) => {
+const pageUrl = (page, full = true) => {
 	const p = url.parse('/' + page.url)
 	if (p.pathname.slice(-1) !== '/') p.pathname += '/'
-	return url.format({
+	if (full) return url.format({
 		protocol: p.protocol || site.protocol,
 		hostname: p.hostname || site.hostname,
 		port:     p.port     || site.port,
@@ -46,6 +46,7 @@ const pageUrl = (page) => {
 		hash:     p.hash     || site.hash,
 		pathname: path.join(site.pathname || '', p.pathname || '')
 	})
+	return path.join(site.pathname || '', p.pathname || '')
 }
 
 
