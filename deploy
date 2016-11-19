@@ -1,7 +1,8 @@
 #!/bin/sh
 
 rsync -rav --delete \
-	--exclude '.*' --exclude node_modules \
+	--exclude '.*' \
+	--exclude node_modules \
 	. 'root@tip-me.org:~/tip-www/'
 
 ssh 'root@tip-me.org' "\
