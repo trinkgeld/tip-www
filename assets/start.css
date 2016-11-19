@@ -7,12 +7,20 @@ body {
 }
 
 #content {
-	padding: 4rem 0;
-	padding: 10vh 0;
+	margin-left: 0;
+	margin-right: 0;
+	padding: 0 0 4rem 0;
+	padding: 0 0 10vh 0;
 }
 
 #content #intro {
+	padding: 10vh 0;
 	text-align: center;
+	color: white;
+	background-image: url(https://static.tip-me.org/DSC_0065.cropped.jpg);
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-position: center;
 }
 
 #content #intro #intro-logo {
@@ -35,14 +43,14 @@ body {
 
 #content #intro .button {
 	margin: 1rem .5rem;
-	color: #444;
+	color: #fff;
 	font-size: 105%;
 	background-color: transparent;
-	border: 1px solid #444;
+	border: 1px solid #fff;
 }
 #content #intro .button:hover {
-	color: #777;
-	border-color: #777;
+	color: #eee;
+	border-color: #eee;
 }
 
 #content #newsletter {
