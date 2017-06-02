@@ -13,7 +13,7 @@ scripts: ['/assets/start.js']
 
 <div id="intro">
 	<img id="intro-logo" src="/assets/jar.svg" alt="Tip Me Logo"/>
-	<h2>Say <em id="intro-thankyou">Thank you!</em> to those who made your products.</h2>
+	<h2>Say <em id="intro-thanks">Thank you!</em> to those who made your <em id="intro-products">shoes!</em>.</h2>
 	<a class="button" href="/blog/">Blog</a>
 	<a class="button" href="/contact/">Contact</a>
 </div>

@@ -33,7 +33,8 @@ body {
 	font-weight: inherit;
 }
 
-#content #intro #intro-thankyou {
+#content #intro #intro-thanks,
+#content #intro #intro-products {
 	padding: .1em .3em;
 	font-style: normal;
 	background-color: rgba(241, 196, 15, .2);

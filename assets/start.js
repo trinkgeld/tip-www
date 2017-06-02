@@ -1,5 +1,5 @@
 (function () {
-	var translations = [
+	var thanks = [
 		'Danke!', // german
 		'நன்றி!', // tamil
 		'ขอบคุณ!', // thai
@@ -10,13 +10,27 @@
 		'gracias!', // spanish
 		'Thank you!' // english
 	]
-	var thankyou = document.getElementById('intro-thankyou')
+	var thanksEl = document.getElementById('intro-thanks')
+
+	var products = [
+		'shoes',
+		'coffee',
+		'cocoa',
+		'condoms'
+	]
+	var productsEl = document.getElementById('intro-products')
+
 	var i = 0
 	setInterval(function () {
-		thankyou.style.opacity = 0
+		thanksEl.style.opacity = 0
+		productsEl.style.opacity = 0
+
 		setTimeout(function () {
-			thankyou.innerHTML = translations[i++ % translations.length]
-			thankyou.style.opacity = 1
+			thanksEl.innerHTML = thanks[i++ % thanks.length]
+			thanksEl.style.opacity = 1
+
+			productsEl.innerHTML = products[i++ % products.length]
+			productsEl.style.opacity = 1
 		}, 300)
 	}, 3000)
 })()
