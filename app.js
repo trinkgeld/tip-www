@@ -2,7 +2,6 @@
 
 const express      = require('express')
 const config = require('config')
-const forceSSL = require('express-force-ssl')
 const hsts         = require('hsts')
 const compression  = require('compression')
 const path         = require('path')
@@ -19,8 +18,6 @@ const receiver = require('./routes/receiver')
 const app = express()
 module.exports = app
 
-app.set('forceSSLOptions', {httpsPort: config.port})
-app.use(forceSSL)
 app.use(hsts({maxAge: 24 * 60 * 60 * 1000}))
 app.use(compression())
 
