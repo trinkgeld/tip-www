@@ -15,7 +15,6 @@
 		"moment": "^2.14.1",
 		"multipipe": "^0.3.1",
 		"through2-reduce": "^1.1.1",
-		"spdy": "^3.4.4",
 		"config": "^1.24",
 		"express": "^4.14",
 		"hsts": "^2",
